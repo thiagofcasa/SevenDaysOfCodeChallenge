@@ -7,8 +7,6 @@ namespace SevenDaysOfCodeChallenge.UI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
-
             PokemonApiInvoke pkApi = new PokemonApiInvoke();
             PokeDex pokeDex = new PokeDex();
 
