@@ -11,7 +11,12 @@ namespace SevenDaysOfCodeChallenge.API_Access.Model
         public int count { get; set; }
         public string? next { get; set; }
         public string? previous { get; set; }
-        public List<Results> results { get; set; }
+        public List<Results>? results { get; set; }
+
+        public static PokeDex ProximaPagina(PokeDex mascote)
+        {
+            return PokemonApiInvoke.GetAllPokemon(mascote.next);
+        }
     }
 
     public class Results

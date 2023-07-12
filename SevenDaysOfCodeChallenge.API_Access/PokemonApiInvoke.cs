@@ -5,9 +5,9 @@ using System.Text.Json;
 
 namespace SevenDaysOfCodeChallenge.API_Access
 {
-    public class PokemonApiInvoke
+    public static class PokemonApiInvoke
     {
-        public PokeDex GetAllPokemon(string apiUrl)
+        public static PokeDex GetAllPokemon(string apiUrl)
         {
             try
             {
@@ -25,7 +25,7 @@ namespace SevenDaysOfCodeChallenge.API_Access
             }
         }
 
-        public Mascote GetPokemon(string url)
+        public static Mascote GetPokemon(string url)
         {
             try
             {
