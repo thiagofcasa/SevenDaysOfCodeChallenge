@@ -1,2 +1,3 @@
-# SevenDaysOfCodeChallenge
-A chalenge of Alura to develop a small application in Seven Days.
+#7DaysOfCode
+A chalenge of Alura and Giulia Bordignon to develop a small application in Seven Days.
+
