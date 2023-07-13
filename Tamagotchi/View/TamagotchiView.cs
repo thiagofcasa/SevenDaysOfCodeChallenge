@@ -1,16 +1,14 @@
-﻿using SevenDaysOfCodeChallenge.API_Access;
-using SevenDaysOfCodeChallenge.API_Access.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using Tamagotchi.Controller;
+using Tamagotchi.Model;
 
-namespace SevenDaysOfCodeChallenge.UI
+namespace Tamagotchi.View
 {
-    public class InitialScreenInterface
+    public class TamagotchiView
     {
         public void Initializing()
         {
@@ -31,7 +29,6 @@ namespace SevenDaysOfCodeChallenge.UI
 
                 switch (opcao)
                 {
-
                     case "1":
                         Mascote mascote = AdotarMascote(nome);
 
@@ -64,7 +61,7 @@ namespace SevenDaysOfCodeChallenge.UI
             Console.WriteLine(nome + " escolha uma espécie.");
 
             PokeDex catalogo = new PokeDex();
-            catalogo = PokemonApiInvoke.GetAllPokemon("https://pokeapi.co/api/v2/pokemon/");
+            catalogo = TamagotchiController.BuscarCatalogo("https://pokeapi.co/api/v2/pokemon/");
             Results escolhido = new Results();
 
             string opcao2 = "";
@@ -85,7 +82,7 @@ namespace SevenDaysOfCodeChallenge.UI
                 //Buscar proxima pagina de opcoes de mascotes
                 if (opcao2 == "9")
                 {
-                    catalogo = PokemonApiInvoke.GetAllPokemon(catalogo.next);
+                    catalogo = TamagotchiController.BuscarCatalogo(catalogo.next);
                 }
                 //Pesquisar o nome do mascote na lista
                 else if (opcao2 != "0")
@@ -114,12 +111,12 @@ namespace SevenDaysOfCodeChallenge.UI
 
             } while (opcao2 != "0");
 
-            throw new NotImplementedException();
+            return null;
         }
 
         private Mascote BuscarMascote(string urlApi, string nome)
         {
-            Mascote mascote = PokemonApiInvoke.GetPokemon(urlApi);
+            Mascote mascote = TamagotchiController.BuscarMascote(urlApi);
 
             do
             {
@@ -167,6 +164,6 @@ namespace SevenDaysOfCodeChallenge.UI
                 Console.WriteLine(mascote.name);
             }
         }
-
     }
+
 }
