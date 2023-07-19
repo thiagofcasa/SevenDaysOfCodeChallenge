@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tamagotchi.Model;
+﻿using Tamagotchi.Model;
 using Tamagotchi.Service;
 
 namespace Tamagotchi.Controller
@@ -12,12 +7,35 @@ namespace Tamagotchi.Controller
     {
         public static Mascote BuscarMascote(string urlApi)
         {
-            return PokemonService.GetPokemon(urlApi);
+            try
+            {
+                return PokemonService.GetPokemon(urlApi);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex);
+            }
         }
 
         public static PokeDex BuscarCatalogo(string urlApi)
         {
-            return PokemonService.GetAllPokemon("https://pokeapi.co/api/v2/pokemon/");
+            try
+            {
+                return PokemonService.GetAllPokemon(urlApi);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex);
+            }
+        }
+
+        public static string Idade(Mascote mascote)
+        {
+            DateTime agora = DateTime.Now;
+
+            TimeSpan resultado = agora - mascote.nascimento;
+
+            return resultado.ToString();
         }
     }
 }
